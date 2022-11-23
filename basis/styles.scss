@@ -1,0 +1,434 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --typeface-header: Project Space;
+   --typeface-action: Geneva;
+   --typeface-main: Roboto;
+   --typeface-weight-medium: 200;
+   --typeface-weight-regular: 600;
+
+   --color-container: #1d527c;
+   --color-contur: #030a28;
+
+   --color-text1-light: #856b1c;
+   --color-text2-light: #433610;
+
+   --color-text1-dark: #d8eaf2;
+   --color-text2-dark: #d0eaf7;
+
+   --background-light: url(./foto/cloud.png);
+   --background-dark: url(./foto/starcloud.jpg);
+
+   @media(prefers-color-scheme: light) {
+      --background: var(--background-light);
+      --color-one: var(--color-text1-light);
+      --color-two: var(--color-text2-light);
+      --color-content: var(--color-text2-dark);
+      --color-text: var(--color-contur);
+      --color-shadow: var(--color-text1-dark);
+   }
+
+   @media(prefers-color-scheme: dark) {
+      --background: var(--background-dark);
+      --color-one: var(--color-text1-dark);
+      --color-two: var(--color-text2-dark);
+      --color-content: var(--color-text1-light);
+      --color-text: var(--color-text1-dark);
+      --color-shadow: var(--color-contur);
+   }
+}
+
+@mixin title-typeface() {
+   font-family: var(--typeface-header);
+   font-weight: var(--typeface-weight-regular);
+   line-height: clamp(20px, 5vw, 40px);
+   letter-spacing: 0.15px;
+}
+
+@mixin action-typeface() {
+   font-family: var(--typeface-action), sans-serif;
+   line-height: 24px;
+   letter-spacing: 0.1px;
+   font-style: italic;
+}
+
+@mixin content-typeface() {
+   font-family: var(--typeface-main);
+   line-height: 18px;
+   letter-spacing: 0.05px;
+}
+
+@mixin footer-typeface($size) {
+   font-family: var(--typeface-header);
+   font-weight: var(--typeface-weight-regular);
+   font-size: $size;
+   line-height: 32px;
+   letter-spacing: 0.1px;
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   background-image: var(--background);
+   background-size: cover;
+}
+
+header {
+   background-image: url(./foto/wallpaper.jpg);
+   background-size: cover;
+   background-position: center;
+   box-shadow: -4px -8px 8px var(--color-container) inset;
+   height: 50vh;
+   padding-inline: clamp(20px, 12vw, 200px);
+   text-align: center;
+
+   @media (max-width:1200px) and (min-width:801px) {
+      height: 42vh;
+   }
+
+   @media (max-width:800px) {
+      height: 35vh;
+   }
+
+   .nav {
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+
+      @media (max-width:1200px) and (min-width:801px) {
+         height: 50px;
+      }
+
+      @media (max-width:800px) {
+         height: 40px;
+      }
+
+      .name {
+         display: flex;
+         align-items: center;
+
+         .pin {
+            background-image: url(./foto/icon.png);
+            background-size: cover;
+            height: 50px;
+            width: 50px;
+
+            @media (max-width:800px) {
+               height: 25px;
+               width: 25px;
+            }
+         }
+
+         .china_name {
+            background-image: url(./foto/name.png);
+            background-size: cover;
+            height: 30px;
+            width: 150px;
+            display: grid;
+            place-content: center;
+
+            @media (max-width:800px) {
+               height: 20px;
+               width: 100px;
+            }
+         }
+      }
+
+      .telefone {
+         display: flex;
+         align-items: center;
+
+         h3 {
+            font-size: clamp(0.8rem, 1.6vw, 1.4rem);
+         }
+
+         .fone {
+            background-image: url(./foto/fone.png);
+            background-size: cover;
+            height: 50px;
+            width: 50px;
+
+            @media (max-width:800px) {
+               height: 30px;
+               width: 30px;
+            }
+         }
+      }
+   }
+
+   .box {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      @media (max-width:800px) {
+         gap: 10px;
+      }
+
+      @media (max-width:1200px) and (min-width:801px) {
+         gap: 20px;
+      }
+
+
+      h1 {
+         font-size: clamp(1.0rem, 2.0vw, 2.0rem);
+         text-shadow: 2px 2px 2px var(--color-container), 2px 2px 2px var(--color-contur);
+         color: var(--color-one);
+         @include title-typeface();
+      }
+
+      h2 {
+         font-size: clamp(0.8rem, 1.6vw, 1.8rem);
+         text-shadow: 1px 1px 2px #1eff00, 1px 1px 2px var(--color-contur);
+         color: var(--color-two);
+         @include title-typeface();
+      }
+   }
+}
+
+main {
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+
+   .action {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      place-content: center;
+      background-color: var(--color-container);
+      padding-inline: clamp(20px, 12vw, 200px);
+      padding-top: 20px;
+      padding-bottom: 24px;
+      box-shadow: -1px -2px 4px var(--color-shadow) inset;
+
+      @media (max-width:1000px) {
+         grid-template-columns: 50px 1fr 60px;
+      }
+
+      .content {
+         display: grid;
+         grid-template-columns: 3fr minmax(150px, 1fr);
+         gap: 8px;
+         place-content: center;
+         box-shadow: 2px 0px 4px #07344b, 2px 2px 4px #320647;
+         border-radius: 12px;
+         padding: 16px;
+         background-color: var(--color-content);
+         position: relative;
+         isolation: isolate;
+
+         &::after {
+            content: '';
+            border-radius: 12px;
+            position: absolute;
+            inset: 0;
+            opacity: var(--state-opacity, 0);
+            background-color: currentColor;
+            z-index: -1;
+         }
+
+         &:hover {
+            --state-opacity: .08;
+         }
+
+         &.one {
+            @media (max-width:1000px) {
+               grid-template-columns: 1fr;
+               background-image: url(./foto/luna-heart.jpg);
+               background-size: cover;
+            }
+         }
+
+         &.two {
+            @media (max-width:1000px) {
+               display: none;
+               grid-template-columns: 1fr;
+               background-image: url(./foto/valise.jpg);
+               background-size: cover;
+            }
+         }
+
+         .text {
+            display: grid;
+            place-content: center;
+
+            p {
+               @include action-typeface();
+               font-size: clamp(1rem, 1.4vw, 1.2rem);
+               text-align: center;
+               text-shadow: 1px 1px 0 var(--color-shadow), 1px 1px 2px var(--color-contur);
+               color: var(--color-text);
+
+               @media (max-width:1000px) and (min-width:400px) {
+                  font-size: clamp(1rem, 1.6vw, 1.6rem);
+
+               }
+
+               @media (max-width:399px) {
+                  font-size: clamp(0.8rem, 1.2vw, 1.4rem);
+                  font-weight: bold;
+               }
+            }
+         }
+
+         .action_image {
+            border-radius: 12px;
+            padding: 8px;
+            width: 100%;
+            aspect-ratio: 1;
+            border: solid 1px var(--color-container);
+            box-shadow: 2px 0px 4px var(--color-container) inset, 2px 2px 4px var(--color-contur) inset;
+            box-sizing: border-box;
+
+            @media (max-width: 1000px) {
+               display: none;
+            }
+
+            img {
+               object-fit: cover;
+               width: 100%;
+               aspect-ratio: 1;
+               border-radius: 12px;
+            }
+         }
+      }
+
+      .triangle {
+         display: none;
+
+         @media (max-width:1000px) {
+            cursor: pointer;
+
+            &.left {
+               display: block;
+               width: 0;
+               height: 0;
+               border-style: solid;
+               border-width: 60px 50px 60px 0;
+               border-color: transparent var(--color-contur) transparent transparent;
+
+               &:active {
+                  box-shadow: 10px 0 5px -5px rgba(0, 0, 0, .5);
+               }
+            }
+
+            &.right {
+               display: block;
+               width: 0;
+               height: 0;
+               border-style: solid;
+               border-width: 60px 0 60px 50px;
+               border-color: transparent transparent transparent var(--color-contur);
+
+               &:active {
+                  box-shadow: -10px 0 5px -5px rgba(0, 0, 0, .5);
+               }
+            }
+         }
+      }
+   }
+}
+
+.tours {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   gap: 16px;
+   padding-inline: clamp(20px, 12vw, 200px);
+
+   @media (max-width:1200px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+   }
+
+   @media (max-width:800px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 1fr);
+   }
+
+   .tour {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 8px var(--color-container), 2px 2px 4px var(--color-contur);
+      border-radius: 12px;
+      padding: 16px;
+      background-color: var(--color-container);
+
+      img {
+         width: 100%;
+         aspect-ratio: 1.6/1;
+         border-radius: 12px 12px 0 0;
+      }
+
+      .description {
+         background-color: var(--color-content);
+         box-shadow: 2px 0px 4px var(--color-container) inset, 2px 2px 4px var(--color-contur) inset;
+         border-radius: 0 0 12px 12px;
+         padding: 16px;
+
+         h3 {
+            @include content-typeface();
+            font-size: 20px;
+            color: var(--color-contur);
+
+            @media (max-width:1200px) {
+               font-size: 18px;
+            }
+
+            @media (max-width:600px) {
+               font-size: 16px;
+            }
+         }
+
+         ul {
+            padding-block: 16px;
+            padding-left: 16px;
+
+            li {
+               @include content-typeface();
+               color: var(--color-contur);
+
+               @media (max-width:800px) {
+                  font-size: 15px;
+               }
+
+               @media (max-width:600px) {
+                  font-size: 14px;
+               }
+            }
+         }
+      }
+   }
+}
+
+
+footer {
+   background-color: var(--color-container);
+   height: 150px;
+   margin-top: 30px;
+   padding-inline: clamp(20px, 12vw, 200px);
+   display: grid;
+   place-content: center;
+   text-align: center;
+   box-shadow: 0 2px 4px var(--color-shadow) inset;
+
+   h2 {
+      font-family: Project Space;
+      font-size: 16px;
+      text-shadow: 1px 1px 2px #1eff00, 1px 1px 2px var(--color-shadow);
+
+      @media (max-width:800px) {
+         font-size: 15px;
+      }
+
+      @media (max-width:600px) {
+         font-size: 14px;
+      }
+   }
+}
